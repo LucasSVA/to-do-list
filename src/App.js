@@ -29,17 +29,12 @@ class App extends Component {
     return (
 
       <div>
-        <Form formSubmit={this.addTask} />
-        {this.state.tasks.map(task => {
-          return (
-            <List
-              task={task.description}
-              status={task.status}
-            />
 
-          );
-        })
-        }
+
+        <Form formSubmit={this.addTask} />
+
+        <List tasks={this.state.tasks} />
+
       </div>
     )
   }
