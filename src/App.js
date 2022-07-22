@@ -25,6 +25,21 @@ class App extends Component {
 
   };
 
+
+  deleteTask = (x, i) => {
+
+    const deleted = this.state.tasks.splice(i, 1)
+    console.log("button");
+
+    this.setState({
+
+      tasks: deleted
+
+
+    })
+
+  }
+
   render() {
     return (
 
@@ -32,8 +47,7 @@ class App extends Component {
 
 
         <Form formSubmit={this.addTask} />
-
-        <List tasks={this.state.tasks} />
+        <List tasks={this.state.tasks} delete={this.deleteTask} />
 
       </div>
     )

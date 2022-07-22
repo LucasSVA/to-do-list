@@ -13,6 +13,8 @@ class List extends Component {
                             <Task
                                 description={task.description}
                                 status={task.status}
+
+
                             />
                         )
                     })
