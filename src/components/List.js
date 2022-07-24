@@ -8,13 +8,14 @@ class List extends Component {
 
                 {
 
-                    this.props.tasks.map(task => {
+                    this.props.tasks.map((task, i) => {
                         return (
                             <Task
                                 description={task.description}
                                 status={task.status}
-
-
+                                index={i}
+                                modifyTask={this.props.modifyTask}
+                                deleteTask={this.props.deleteTask}
                             />
                         )
                     })

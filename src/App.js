@@ -12,9 +12,7 @@ class App extends Component {
     }
   }
 
-
   addTask = (str) => {
-
     const clonedTasks = [...this.state.tasks, {
       description: str,
       status: "to do"
@@ -25,30 +23,37 @@ class App extends Component {
 
   };
 
-
-  deleteTask = (x, i) => {
-
-    const deleted = this.state.tasks.splice(i, 1)
-    console.log("button");
-
+  deleteTask = (i) => {
+    const clonedTasks = [...this.state.tasks];
+    clonedTasks.splice(i, 1);
     this.setState({
+      tasks: clonedTasks,
+    });
+  };
 
-      tasks: deleted
-
-
+  modifyTask = (item, i) => {
+    const clonedTasks = [...this.state.tasks]
+    clonedTasks[i] = item
+    this.setState({
+      tasks: clonedTasks,
     })
-
   }
-
   render() {
     return (
 
       <div>
-
-
+        <h1 className="text-center text-6xl font-extrabold">To Do List</h1>
         <Form formSubmit={this.addTask} />
-        <List tasks={this.state.tasks} delete={this.deleteTask} />
-
+        <article className='mb-4 flex justify-center'>
+          <button className='border-solid border-2 rounded text-jg bg-red-600'>All</button>
+          <button className='border-solid border-2 rounded text-jg bg-amber-400'>To Do</button>
+          <button className='border-solid border-2 rounded text-jg bg-yellow-200'>Doing</button>
+          <button className='border-solid border-2 rounded text-jg bg-lime-400'>Done</button>
+        </article>
+        <List 
+          tasks={this.state.tasks}
+          deleteTask={this.deleteTask}
+        />
       </div>
     )
   }
